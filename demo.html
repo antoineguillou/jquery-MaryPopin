@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ScrollPopin preview</title>
+	
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	
+	<style type="text/css">
+		html, body{
+			height: 100%;
+			width: 100%;
+			
+		}
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		.popin{
+			background-color: #fff;
+			display: none;
+			height: 300px;
+			margin: 0 auto;
+			width: 300px;
+		}
+		#popin-mask{
+			background-color: #000;
+		}
+		#popin-1{
+			background-color: orange;
+		}
+		#popin-2{
+			background-color: cyan;
+		}
+		#popin-3{
+			background: pink;
+			height: 2000px;
+			width: 500px;
+		}
+		.btn{
+			background-color: #ccc;
+			border-bottom: 1px solid #333;
+			color: #000;
+			display: block;
+			font: 400 14px/40px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			height: 40px;
+			margin: 0 auto 50px;
+			text-align: center;
+			text-decoration: none;
+			width: 200px;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
+		}
+	</style>
+	
+</head>
+
+<body>
+	<!-- Buttons -->
+	<a href="#" id="trigger-1" class="btn">Open A</a>
+	<br />
+	<a href="#" id="trigger-2" class="btn">Open B</a>
+	<br />
+	<a href="#" id="trigger-3" class="btn">Open A bis</a>
+	<br />
+	<a href="#" id="trigger-5" class="btn">Open C</a>
+	
+	<!-- Popins -->
+	<div id="popin-1" class="popin">
+		<p>blablabla <a href="#" class="close">x</a></p>
+		
+	</div>
+	
+	<div id="popin-2" class="popin">
+		<p><a href="#" class="close-popin">x</a> blublublu<br /><a href="#" id="trigger-4">Open the other popin</a></p>
+	</div>
+	
+	<!-- Import jQuery 1.9.1-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+	
+	<!-- Import Scrollable Popin -->
+	<script src="js/jquery-scrollpopin.js"></script>
+	
+	<script>
+		(function($){
+			$('#trigger-1').scrollpopin('#popin-1');
+			
+			var pop2 = [document.getElementById('popin-2')];
+			$('#trigger-2').scrollpopin(pop2, {
+				position: 'top',
+				close: '.close-popin',
+				maskClick: false
+			});
+			
+			$('#trigger-3').click(function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$('#trigger-1').scrollpopin('open');
+			});
+			
+			$('#trigger-4').scrollpopin('#popin-1');
+			
+			var popin = '<div id="popin-3"></div>';
+			$('#trigger-5').scrollpopin(popin);
+			
+		})(jQuery);
+	</script>
+</body>
+</html>
