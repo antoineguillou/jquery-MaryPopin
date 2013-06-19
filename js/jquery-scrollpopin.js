@@ -186,7 +186,8 @@
 				'right' : 0,
 				'top' : 0,
 				'z-index' : 99999,
-				'overflow-y' : 'scroll'
+				'overflow-y' : 'scroll',
+				'-webkit-overflow-scrolling' : 'touch'
 			});
 		methods.mask = $('#popin-mask');
 		
@@ -201,6 +202,14 @@
 				log('No popin initialized');
 			}
 		});
+		
+		// Close popin on escape key press 
+		document.onkeydown = function(evt) {
+			evt = evt || window.event;
+			
+			if (evt.keyCode == 27)
+				methods.close.apply(methods.openedPopin);
+		};
 		
 		// Get viewport height
 		getViewportHeight();
