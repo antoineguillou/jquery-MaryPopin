@@ -40,6 +40,7 @@ That's it !
 Then all you have to do is add some CSS.
 
 A new fullsize div with the id "popin-mask" is created at the end of the body tag.
+The popin element is placed inside that div.
 
 Here are some base styles you can use :
 
@@ -70,7 +71,7 @@ var popin = [document.getElementById('popin')];
 $('#trigger').scrollpopin(popin);
 ```
 
-You can even use a string as your popin :
+You can even use a string containing your html as your popin :
 
 ```javascript
 var popin = '<div id="popin"><p>Just another popin</p></div>';
@@ -84,7 +85,7 @@ Parameters
 A few options are available if you need them :
 
 ```javascript
-$('#trigger').scrollpopin(popin, {
+$('#trigger').scrollpopin('#popin', {
 	position: 'middle',
 	close: '.close',
 	speed: 300,
