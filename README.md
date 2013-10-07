@@ -28,14 +28,14 @@ don't forget to include the latest version of jQuery and the plugin :
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
 
-<!-- Import ScrollPopin -->
-<script src="js/jquery-scrollpopin.js"></script>
+<!-- Import Mary Popin -->
+<script src="js/jquery-mary-popin.js"></script>
 ```
 
 then initialize the plugin like this :
 
 ```javascript
-$('#trigger').scrollpopin('#popin');
+$('#trigger').marypopin('#popin');
 ```
 
 That's it ! 
@@ -71,14 +71,14 @@ You can pass a javascript element instead of a selector :
 
 ```javascript
 var popin = [document.getElementById('popin')];
-$('#trigger').scrollpopin(popin);
+$('#trigger').marypopin(popin);
 ```
 
 You can even use a string containing your html as your popin :
 
 ```javascript
 var popin = '<div id="popin"><p>Just another popin</p></div>';
-$('#trigger').scrollpopin(popin);
+$('#trigger').marypopin(popin);
 ```
 
 
@@ -88,7 +88,7 @@ Parameters
 A few options are available if you need them :
 
 ```javascript
-$('#trigger').scrollpopin('#popin', {
+$('#trigger').marypopin('#popin', {
 	position: 'middle',
 	close: '.close',
 	speed: 300,

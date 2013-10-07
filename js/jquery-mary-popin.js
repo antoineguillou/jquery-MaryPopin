@@ -1,5 +1,5 @@
 /*
- * jQuery ScrollPopin
+ * jQuery Mary Popin
  *
  * Author : @starfennec
  * Version: 0.3 alpha
@@ -159,7 +159,7 @@
 	// Custom console.log
 	function log() {
 	if (window.console && console.log)
-		console.log('[scrollPopin] ' + Array.prototype.join.call(arguments,' '));
+		console.log('[MaryPopin] ' + Array.prototype.join.call(arguments,' '));
 	}
 	
 	// Get viewport height
@@ -227,7 +227,7 @@
 	
 	globalInit();
 	
-	$.fn.scrollpopin = function( method, options ) {
+	$.fn.marypopin = function( method, options ) {
 		// Method calling logic
 		if ( methods[method] ) {
 			return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));

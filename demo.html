@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>ScrollPopin preview</title>
+	<title>MaryPopin demo</title>
 	
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -86,10 +86,10 @@
 	
 	<script>
 		(function($){
-			$('#trigger-1').scrollpopin('#popin-1');
+			$('#trigger-1').marypopin('#popin-1');
 			
 			var pop2 = [document.getElementById('popin-2')];
-			$('#trigger-2').scrollpopin(pop2, {
+			$('#trigger-2').marypopin(pop2, {
 				position: 'top',
 				close: '.close-popin',
 				maskClick: false
@@ -98,13 +98,13 @@
 			$('#trigger-3').click(function(e){
 				e.preventDefault();
 				e.stopPropagation();
-				$('#trigger-1').scrollpopin('open');
+				$('#trigger-1').marypopin('open');
 			});
 			
-			$('#trigger-4').scrollpopin('#popin-1');
+			$('#trigger-4').marypopin('#popin-1');
 			
 			var popin = '<div id="popin-3"></div>';
-			$('#trigger-5').scrollpopin(popin);
+			$('#trigger-5').marypopin(popin);
 			
 		})(jQuery);
 	</script>
