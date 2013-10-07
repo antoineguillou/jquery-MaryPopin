@@ -3,7 +3,7 @@ jQuery Mary Popin
 
 A simple way to display popins on your project.
 
-Demo (sorry about the aweful css) : https://rawgithub.com/antoineguillou/scrollpopin/master/demo.html
+[Demo (sorry about the aweful css)](https://rawgithub.com/antoineguillou/jquery-MaryPopin/master/demo.html).
 
 Default usage
 -------------
