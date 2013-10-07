@@ -1,4 +1,4 @@
-jQuery scrollPopin
+jQuery Mary Popin
 ===========
 
 A simple way to display popins on your project.
@@ -58,6 +58,7 @@ html, body{
 #popin{
 	background-color: #fff;
 	color: #000;
+	margin: 0 auto;
 	padding: 20px;
 	width: 500px;
 }
