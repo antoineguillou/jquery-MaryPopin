@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>MaryPopin demo</title>
-	
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
 	
 	<style type="text/css">
 		html, body{
@@ -13,9 +13,10 @@
 			width: 100%;
 			
 		}
-		body{
+		body {
 			margin: 0;
 			padding: 0;
+			background-color: rgb(66, 70, 80);
 		}
 		.popin{
 			background-color: #fff;
@@ -39,33 +40,65 @@
 			height: 2000px;
 			width: 500px;
 		}
-		.btn{
-			background-color: #ccc;
-			border-bottom: 1px solid #333;
-			color: #000;
+		h1 {
+			text-align: center;
+			font-family: 'Pathway Gothic One', sans-serif;
+			text-transform: uppercase;
+			font-size: 46px;
+			margin-bottom: 50px;
+			margin-top: 50px;
+			color: white;
+		}
+		.btn {
+			background-color: #FFF;
+			color: #646464;
 			display: block;
-			font: 400 14px/40px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			font: 400 11px/40px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 			height: 40px;
 			margin: 0 auto 50px;
 			text-align: center;
 			text-decoration: none;
 			width: 200px;
-			-webkit-border-radius: 10px;
-			border-radius: 10px;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+			box-shadow: inset 0px -2px 0px rgb(204, 204, 204);
+			text-transform: uppercase;
+			font-weight: bold;
+		}
+		.buttons ul {
+			width: 200px;
+			width: 200px;
+			margin: 0 auto;
+			list-style: none;
+			overflow: hidden;
+			padding: 0px;
+		}
+		.buttons li {
+			display: block;
+			margin-right: 0px;
+			height: 40px;
+			width: 200px;
+			list-style: none;
+			margin-bottom: 50px;
+		}
+		.buttons li.last {
+			margin-right: 0px;
 		}
 	</style>
-	
 </head>
 
 <body>
+	<h1>MaryPopin demo</h1>
+	
 	<!-- Buttons -->
-	<a href="#" id="trigger-1" class="btn">Open A</a>
-	<br />
-	<a href="#" id="trigger-2" class="btn">Open B</a>
-	<br />
-	<a href="#" id="trigger-3" class="btn">Open A bis</a>
-	<br />
-	<a href="#" id="trigger-5" class="btn">Open C</a>
+	<div class="buttons">
+		<ul>
+			<li><a href="#" id="trigger-1" class="btn">EXAMPLE 1</a></li>
+			<li><a href="#" id="trigger-2" class="btn">EXAMPLE 2</a></li>
+			<li><a href="#" id="trigger-3" class="btn">EXAMPLE 3</a></li>
+			<li class="last"><a href="#" id="trigger-5" class="btn">EXAMPLE 4</a></li>
+		</ul>
+	</div>
 	
 	<!-- Popins -->
 	<div id="popin-1" class="popin">
