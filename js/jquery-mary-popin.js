@@ -2,8 +2,8 @@
  * jQuery Mary Popin
  *
  * Author : @starfennec
- * Version: 0.3 alpha
- * Date: June 5 2013
+ * Version: 0.4 alpha
+ * Date: nov 4 2013
  */
 
 (function($) {
@@ -21,7 +21,8 @@
 				beforeOpen: undefined,
 				afterOpen: undefined,
 				beforeClose: undefined,
-				afterClose: undefined
+				afterClose: undefined,
+				clicked: undefined
 			}, options);
 			
 			settings.popin = popin;
@@ -38,7 +39,7 @@
 				e.preventDefault();
 				methods.close.apply(self);
 			}; })(this));
-						
+			
 			popin.click(function(e){
 				e.stopPropagation();
 			});
@@ -47,6 +48,7 @@
 			this.click((function(self){ return function(e){
 				e.stopPropagation();
 				e.preventDefault();
+				settings.clicked = this;
 				methods.open.apply(self);
 			}; })(this));
 		},
@@ -80,7 +82,7 @@
 			
 			// 'Before' function
 			if(typeof settings.beforeOpen === 'function')
-				settings.beforeOpen.call(this);
+				settings.beforeOpen.call(this, settings.clicked);
 			
 			// Set popin position
 			positionPopin.apply(this);
@@ -88,7 +90,7 @@
 			// Show popin
 			settings.popin.addClass('animate-on').fadeIn(settings.speed, function(){				
 				if(typeof settings.afterOpen === 'function')
-					settings.afterOpen.call(this);
+					settings.afterOpen.call(this, settings.clicked);
 				$(this).removeClass('animate-on');
 			});
 		},
@@ -103,13 +105,13 @@
 			
 			// 'Before' function
 			if(typeof settings.beforeClose === 'function')
-				settings.beforeClose.call(methods.openedPopin);
+				settings.beforeClose.call(methods.openedPopin, settings.clicked);
 			
 			window.popinObject = settings.popin;
 			
 			settings.popin.addClass('animate-off').fadeOut(settings.speed, function(){
 				if(typeof settings.afterClose === 'function')
-					settings.afterClose.call(methods.openedPopin);
+					settings.afterClose.call(methods.openedPopin, settings.clicked);
 				methods.openedPopin = undefined;
 				
 				if(typeof callback === 'function')

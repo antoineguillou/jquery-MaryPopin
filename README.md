@@ -129,3 +129,14 @@ $('#trigger').marypopin('#popin', {
     <td>afterClose</td><td>function</td><td>undefined</td><td>A function to execute after closing the popin.</td>
   </tr>
 </table>
+
+You might need to know what element triggered the popin in one of the functions, here's an example where we want to add a class to the trigger when the popin is closed :
+
+```javascript
+$('#trigger').marypopin('#popin', {
+	beforeClose: function(clickedElement){
+		$(clickedElement).addClass('clicked');
+	}
+});
+```
+It can be useful if you need to make ajax calls inside the popin...
