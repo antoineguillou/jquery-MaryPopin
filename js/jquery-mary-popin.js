@@ -35,7 +35,7 @@
 			popin.hide().appendTo(methods.mask);
 			
 			// Close button event
-			popin.find(settings.close).click((function(self){ return function(e){
+			popin.on('click', settings.close, (function(self){ return function(e){
 				e.preventDefault();
 				methods.close.apply(self);
 			}; })(this));
@@ -178,20 +178,23 @@
 	
 	function globalInit() {
 		// Create mask
-		$('<div id="popin-mask"></div>')
-			.appendTo('body')
-			.css({
-				'bottom' : 0,
-				'display' : 'none',
-				'left' : 0,
-				'position' : 'fixed',
-				'right' : 0,
-				'top' : 0,
-				'z-index' : 99999,
-				'overflow-y' : 'scroll',
-				'-webkit-overflow-scrolling' : 'touch'
-			});
+		if($('#popin-mask').length == 0){
+			$('<div id="popin-mask"></div>')
+				.appendTo('body');
+		}
 		methods.mask = $('#popin-mask');
+		
+		methods.mask.css({
+			'bottom' : 0,
+			'display' : 'none',
+			'left' : 0,
+			'position' : 'fixed',
+			'right' : 0,
+			'top' : 0,
+			'z-index' : 99999,
+			'overflow-y' : 'scroll',
+			'-webkit-overflow-scrolling' : 'touch'
+		});
 		
 		// Mask click event
 		methods.mask.click(function(){
