@@ -65,10 +65,11 @@
 		openMask: function(){
 			// Store html & body tags overflow values
 			var settings = this.data('settings');
-			settings.htmlVal = $('html').css('overflow');
-			settings.bodyVal = $('body').css('overflow');
 			
-			$('html, body').css({'overflow' : 'hidden'});
+			//settings.htmlVal = $('html').css('overflow');
+			//settings.bodyVal = $('body').css('overflow');
+			
+			//$('html, body').css({'overflow' : 'hidden'});
 			
 			// Show mask (set timeout to fix IE display bug)
 			setTimeout(function(){
@@ -128,6 +129,7 @@
 					// Restore html & body tags initial overflow value
 					$('html').css({'overflow' : settings.htmlVal});
 					$('body').css({'overflow' : settings.bodyVal});
+					
 				});
 			},0);
 		}
@@ -192,9 +194,11 @@
 			'right' : 0,
 			'top' : 0,
 			'z-index' : 99999,
-			'overflow-y' : 'scroll',
+			'overflow' : 'auto',
 			'-webkit-overflow-scrolling' : 'touch'
 		});
+		
+		$('html, body').css({'overflow' : 'auto'});
 		
 		// Mask click event
 		methods.mask.click(function(){
