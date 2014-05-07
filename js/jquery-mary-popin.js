@@ -2,8 +2,9 @@
  * jQuery Mary Popin
  *
  * Author : @starfennec
- * Version: 0.4 alpha
- * Date: nov 4 2013
+ * Version: 0.5 alpha
+ * Date: may 7 2017
+ * Doc: https://github.com/antoineguillou/jquery-MaryPopin
  */
 
 (function($) {
@@ -132,6 +133,10 @@
 					
 				});
 			},0);
+		},
+		reposition: function(){
+			// Set popin position
+			positionPopin.apply(this);
 		}
 	};
 	
