@@ -9,11 +9,12 @@
 	
 	<style type="text/css">
 		html, body{
-			height: 100%;
-			width: 100%;
-			
+			/*height: 100%;*/
+			//width: 100%;
 		}
 		body {
+			background: transparent url(http://placekitten.com/1249/1000) 0 0 no-repeat;
+			background-size: 100% auto;
 			margin: 0;
 			padding: 0;
 			background-color: rgb(66, 70, 80);
@@ -27,6 +28,7 @@
 		}
 		#popin-mask{
 			background-color: rgba(0,0,0,.5);
+			overflow-y: scroll;
 		}
 		#popin-1{
 			background-color: orange;
@@ -62,6 +64,9 @@
 			box-shadow: inset 0px -2px 0px rgb(204, 204, 204);
 			text-transform: uppercase;
 			font-weight: bold;
+		}
+		.buttons{
+			height: 3000px;
 		}
 		.buttons ul {
 			width: 200px;
@@ -109,8 +114,8 @@
 	</div>
 	
 	<!-- Import jQuery 1.9.1-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
 	
 	<!-- Import Scrollable Popin -->
 	<script src="js/jquery-mary-popin.js"></script>

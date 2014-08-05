@@ -15,6 +15,7 @@
 			popin = $(popin);
 			
 			var settings = $.extend( {
+				trigger: undefined,
 				position: 'middle',
 				close: '.close',
 				speed: 300,
@@ -67,10 +68,15 @@
 			// Store html & body tags overflow values
 			var settings = this.data('settings');
 			
-			//settings.htmlVal = $('html').css('overflow');
-			//settings.bodyVal = $('body').css('overflow');
+			settings.htmlVal = $('html').css('overflow');
+			settings.bodyVal = $('body').css('overflow');
 			
-			//$('html, body').css({'overflow' : 'hidden'});
+			getWindowWidth();
+			
+			$('html, body').css({
+				'overflow' : 'hidden',
+				'width' : methods.windowWidth
+			});
 			
 			// Show mask (set timeout to fix IE display bug)
 			setTimeout(function(){
@@ -112,7 +118,7 @@
 			window.popinObject = settings.popin;
 			
 			settings.popin.addClass('animate-off').fadeOut(settings.speed, function(){
-				if(typeof settings.afterClose === 'function')
+				if(typeof obj.settings.afterClose === 'function')
 					settings.afterClose.call(methods.openedPopin, settings.clicked);
 				methods.openedPopin = undefined;
 				
@@ -128,8 +134,14 @@
 			setTimeout(function(){
 				methods.mask.fadeOut(300, function(){
 					// Restore html & body tags initial overflow value
-					$('html').css({'overflow' : settings.htmlVal});
-					$('body').css({'overflow' : settings.bodyVal});
+					$('html').css({
+						'overflow' : settings.htmlVal,
+						'width' : 'auto'
+					});
+					$('body').css({
+						'overflow' : settings.bodyVal,
+						'width' : 'auto'
+					});
 					
 				});
 			},0);
@@ -149,7 +161,7 @@
 		setTimeout(function(){
 			switch(settings.position){
 				case "middle" :
-					margin = Math.floor((methods.windowHeight - settings.popin.outerHeight()) / 2);
+					margin = Math.floor((methods.windowHeight - settings.popin.outerHeight(false)) / 2);
 					if(margin < 0)
 						margin = 0;
 					break;
@@ -183,6 +195,11 @@
 			methods.windowHeight = $(window).height();
 	}
 	
+	// Get viewport height
+	function getWindowWidth(){
+		methods.windowWidth = $(window).width();
+	}
+	
 	function globalInit() {
 		// Create mask
 		if($('#popin-mask').length == 0){
@@ -200,6 +217,7 @@
 			'top' : 0,
 			'z-index' : 99999,
 			'overflow' : 'auto',
+			'overflow-y' : 'scroll',
 			'-webkit-overflow-scrolling' : 'touch'
 		});
 		
@@ -230,6 +248,10 @@
 		
 		$(window).resize(function(){
 			getViewportHeight();
+			getWindowWidth();
+			$('html, body').css({
+				'width' : methods.windowWidth
+			});
 		});
 		
 		// Reload popin position on viewport size change
