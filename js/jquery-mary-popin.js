@@ -118,7 +118,7 @@
 			window.popinObject = settings.popin;
 			
 			settings.popin.addClass('animate-off').fadeOut(settings.speed, function(){
-				if(typeof obj.settings.afterClose === 'function')
+				if(typeof settings.afterClose === 'function')
 					settings.afterClose.call(methods.openedPopin, settings.clicked);
 				methods.openedPopin = undefined;
 				
