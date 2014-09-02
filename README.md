@@ -1,6 +1,8 @@
 jQuery Mary Popin
 ===========
 
+![alt tag](https://raw.github.com/antoineguillou/jquery-MaryPopin/master/marypopin.gif)
+
 A simple way to display popins on your project.
 
 [Demo (sorry about the aweful css)](https://rawgithub.com/antoineguillou/jquery-MaryPopin/master/demo.html).
@@ -21,6 +23,7 @@ and an element you want to use as your popin :
 	<p>Hello World !</p>
 </div>
 ```
+
 don't forget to include the latest version of jQuery and the plugin :
 
 ```html
