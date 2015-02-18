@@ -2,8 +2,8 @@
  * jQuery Mary Popin
  *
  * Author : @starfennec
- * Version: 0.5 alpha
- * Date: may 7 2017
+ * Version: 0.5.1 alpha
+ * Date: Feb 17 2015
  * Doc: https://github.com/antoineguillou/jquery-MaryPopin
  */
 
@@ -128,7 +128,7 @@
 			});
 		},
 		closeMask: function(){
-			var settings = this.data('settings');
+			var settings = methods.openedPopin.data('settings');
 			
 			// Hide mask (set timeout to fix IE display bug)
 			setTimeout(function(){
@@ -225,9 +225,9 @@
 		
 		// Mask click event
 		methods.mask.click(function(){
-			if(methods.openedPopin != undefined){
-				var settings = methods.openedPopin.data('settings');
-				
+			var settings = methods.openedPopin.data('settings');
+			
+			if((methods.openedPopin != undefined) && ($(e.target).closest(settings.popin.selector).length == 0)) {
 				if(settings.maskClick === true)
 					methods.close.apply(methods.openedPopin);
 			} else {
