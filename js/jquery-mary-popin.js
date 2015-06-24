@@ -179,8 +179,8 @@
 	
 	// Custom console.log
 	function log() {
-	if (window.console && console.log)
-		console.log('[MaryPopin] ' + Array.prototype.join.call(arguments,' '));
+		if (window.console && console.log)
+			console.log('[MaryPopin] ' + Array.prototype.join.call(arguments,' '));
 	}
 	
 	// Get viewport height
@@ -224,7 +224,7 @@
 		$('html, body').css({'overflow' : 'auto'});
 		
 		// Mask click event
-		methods.mask.click(function(){
+		methods.mask.click(function(e){
 			var settings = methods.openedPopin.data('settings');
 			
 			if((methods.openedPopin != undefined) && ($(e.target).closest(settings.popin.selector).length == 0)) {
