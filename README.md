@@ -24,12 +24,12 @@ and an element you want to use as your popin :
 </div>
 ```
 
-don't forget to include the latest version of jQuery and the plugin :
+don't forget to include a recent version of jQuery and the plugin :
 
 ```html
-<!-- Import jQuery 1.9.1-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
+<!-- Import jQuery 1.11.3-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.11.3.min.js"><\/script>')</script>
 
 <!-- Import Mary Popin -->
 <script src="js/jquery-mary-popin.js"></script>
@@ -38,52 +38,76 @@ don't forget to include the latest version of jQuery and the plugin :
 then initialize the plugin like this :
 
 ```javascript
-$('#trigger').marypopin('#popin');
+$('#popin').marypopin();
 ```
 
-That's it ! 
-Then all you have to do is add some CSS.
+That's it!
 
-A new fullsize div with the id "popin-mask" is created at the end of the body tag.
+All you have to do is add some CSS.
+
+A new fullsize div with the id "marypopin-mask" is created at the end of the body tag.
 The popin element is placed inside that div.
 
-Here are some base styles you can use :
+Medthods
+-------------
 
-```css
-html, body{
-	height: 100%;
-	position: relative;
-	width: 100%;
-}
-#popin-mask{
-	background-color: rgba(0,0,0,.5);
-}
-#popin{
-	background-color: #fff;
-	color: #000;
-	margin: 0 auto;
-	padding: 20px;
-	width: 500px;
-}
+You can add a selector when you initialize the popin :
+
+```javascript
+$('#popin').marypopin('#trigger');
 ```
+
+or a jquery object
+
+```javascript
+var button = $('#trigger');
+$('#popin').marypopin(button);
+```
+
+Clicking on the element with the 'trigger' ID would open the popin.
+
+There are a few other things you can do, like open a popin from anywhere in your page :
+
+```javascript
+$('#trigger').click(function(e){
+	e.preventDefault();
+	$('#popin').marypopin('open');
+});
+```
+
+... close it :
+
+```javascript
+$('#some-other-link').click(function(e){
+	e.preventDefault();
+	$('#popin').marypopin('close');
+});
+```
+
+... or recalculate it's vartical position (this can be useful if you need to change the popin's content while it's open) :
+
+```javascript
+$('#popin').marypopin('positionPopin');
+```
+
+
 
 Other usages
 -------------
 
-You can pass a javascript element instead of a selector :
+You can pass a javascript object instead of a selector :
 
 ```javascript
-var popin = [document.getElementById('popin')];
-$('#trigger').marypopin(popin);
+var popin = document.getElementById('popin');
+$(popin).marypopin();
 ```
 
 You can even use a string containing your html as your popin :
 
 ```javascript
 var popin = '<div id="popin"><p>Just another popin</p></div>';
-$('#trigger').marypopin(popin);
+$(popin).marypopin();
 ```
-
 
 Parameters
 -------------
@@ -91,9 +115,10 @@ Parameters
 A few options are available if you need them :
 
 ```javascript
-$('#trigger').marypopin('#popin', {
+$('#popin').marypopin({
+	triggers: '#trigger',
+	closeSelector: '.close',
 	position: 'middle',
-	close: '.close',
 	speed: 300,
 	maskClick: true,
 	beforeOpen: function(){},
@@ -108,10 +133,13 @@ $('#trigger').marypopin('#popin', {
     <th>Parameter</th><th>Type</th><th>Default</th><th>Description</th>
   </tr>
   <tr>
+    <td>triggers</td><td>selector or jquery object</td><td>undefined</td><td>The elements that will trigger the popin.</td>
+  </tr>
+  <tr>
     <td>position</td><td>string</td><td>'middle'</td><td>Vertical position. Possible values : 'middle', 'top'</td>
   </tr>
   <tr>
-    <td>close</td><td>selector</td><td>'.close'</td><td>Selector for the element(s) closing the popin on click (elements must be inside the popin element).</td>
+    <td>closeSelector</td><td>selector</td><td>'.close'</td><td>Selector for the element(s) closing the popin on click (elements must be inside the popin element).</td>
   </tr>
   <tr>
     <td>speed</td><td>number</td><td>300</td><td>Fade in / out speed in milliseconds.</td>
@@ -133,13 +161,13 @@ $('#trigger').marypopin('#popin', {
   </tr>
 </table>
 
-You might need to know what element triggered the popin in one of the functions, here's an example where we want to add a class to the trigger when the popin is closed :
+You might need to know what element triggered the popin in one of the functions, here's an example where we want to add a class to the trigger when the popin is opened :
 
 ```javascript
-$('#trigger').marypopin('#popin', {
-	beforeClose: function(clickedElement){
-		$(clickedElement).addClass('clicked');
+$('#popin').marypopin({
+	beforeOpen: function(popin, trigger){
+		$(trigger).addClass('clicked');
 	}
 });
 ```
-It can be useful if you need to make ajax calls inside the popin...
+It can be useful if you need to load content inside the popin...

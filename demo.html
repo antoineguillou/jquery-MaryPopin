@@ -10,7 +10,7 @@
 	<style type="text/css">
 		html, body{
 			/*height: 100%;*/
-			//width: 100%;
+			/*width: 100%;*/
 		}
 		body {
 			background: transparent url(http://placekitten.com/1249/1000) 0 0 no-repeat;
@@ -26,7 +26,7 @@
 			margin: 0 auto;
 			width: 300px;
 		}
-		#popin-mask{
+		#marypopin-mask{
 			background-color: rgba(0,0,0,.5);
 			overflow-y: scroll;
 		}
@@ -121,26 +121,48 @@
 	<script src="js/jquery-mary-popin.js"></script>
 	
 	<script>
-		(function($){
-			$('#trigger-1').marypopin('#popin-1');
+		(function($){			
+			$('#popin-1').marypopin({
+				triggers: '#trigger-1, #trigger-4',
+				position: 'middle',
+				closeSelector: '.close',
+				speed: 300,
+				maskClick: false,
+				beforeOpen: function(a, b){
+					console.log(a);
+					console.log(b);
+					// This function is called before opening the popin
+				},
+				afterOpen: function(){
+					// This function is called after opening the popin
+				},
+				beforeClose: function(){
+					// This function is called before closing the popin
+				},
+				afterClose: function(){
+					// This function is called after closing the popin
+				}
+			});
 			
-			var pop2 = [document.getElementById('popin-2')];
-			$('#trigger-2').marypopin(pop2, {
-				position: 'top',
-				close: '.close-popin',
-				maskClick: false
+			var popin2 = document.getElementById('popin-2');
+			$(popin2).marypopin();
+			
+			
+			$('#trigger-2').click(function(e){
+				e.preventDefault();
+				$('#popin-2').marypopin('open');
 			});
 			
 			$('#trigger-3').click(function(e){
 				e.preventDefault();
-				e.stopPropagation();
-				$('#trigger-1').marypopin('open');
+				$('#popin-1').marypopin('open');
 			});
 			
-			$('#trigger-4').marypopin('#popin-1');
-			
 			var popin = '<div id="popin-3"><img src="longcat.png" /></div>';
-			$('#trigger-5').marypopin(popin);		
+			$(popin).marypopin({
+				triggers: $('#trigger-5')
+			});
+			
 		})(jQuery);
 	</script>
 </body>
