@@ -105,12 +105,12 @@
 	
 	<!-- Popins -->
 	<div id="popin-1" class="popin">
-		<p>blablabla <a href="#" class="close">x</a></p>
+		<p>Popin 1 <a href="#" class="close">x</a></p>
 		
 	</div>
 	
 	<div id="popin-2" class="popin">
-		<p><a href="#" class="close-popin">x</a> blublublu<br /><a href="#" id="trigger-4">Open the other popin</a></p>
+		<p><a href="#" class="close-popin">x</a> Popin 2<br /><a href="#" id="trigger-4">Open the other popin</a></p>
 	</div>
 	
 	<!-- Import jQuery 1.9.1-->
@@ -128,9 +128,7 @@
 				closeSelector: '.close',
 				speed: 300,
 				maskClick: false,
-				beforeOpen: function(a, b){
-					console.log(a);
-					console.log(b);
+				beforeOpen: function(){
 					// This function is called before opening the popin
 				},
 				afterOpen: function(){
