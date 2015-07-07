@@ -211,14 +211,16 @@
 					'overflow-y' : 'scroll',
 					'-webkit-overflow-scrolling' : 'touch'
 				})
-				.appendTo('body').click(function(e){
+				.appendTo('body').click(function(event){
 					$.each( globalData.popins, function(i,e){
 						if(e.isOpen){
-							if(e.settings.maskClick)
-								e.close();
+							if($(event.target).closest(e.popin).length === 0){
+								if(e.settings.maskClick)
+									e.close();
+							}
 						}
 					});
-				});;
+				});
 		}
 		
 		
