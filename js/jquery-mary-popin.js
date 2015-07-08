@@ -2,8 +2,8 @@
  * jQuery Mary Popin
  *
  * Author : @starfennec
- * Version: 0.6 beta
- * Date: jun 25 2015
+ * Version: 0.7 beta
+ * Date: jul 08 2015
  * Doc: https://github.com/antoineguillou/jquery-MaryPopin
  */
 
@@ -286,20 +286,22 @@
 			var element = $(e);
 			var mp = element.data('marypopin');
 			
-			if (mp){
-				// Element is already a popin
-				if(mp[options]){
-					// Apply method if it exists
-					return mp[options].apply( mp );
-				} else {
-					log('method not available');
-				}
+			if (mp && mp[options]){
+				// Apply method if it exists & popin is init
+				return mp[options].apply( mp );
+			} else if(mp && !mp[options]){
+				log('method not available');
 			} else {
 				// Init popin
 				if((typeof(options) === 'string') || (typeof(options) === 'object' && (options.jquery || options.tagName))) {
-					mp = new MaryPopin(this, {
-						triggers: options
-					});
+					if(MaryPopin.prototype[options]){
+						mp = new MaryPopin(this);
+						return mp[options].apply( mp );
+					} else {
+						mp = new MaryPopin(this, {
+							triggers: options
+						});
+					}
 				} else {
 					mp = new MaryPopin(this, options);				
 				}
