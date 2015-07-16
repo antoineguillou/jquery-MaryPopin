@@ -25,10 +25,6 @@
 		// Move popin in the mask
 		$(popin).hide().appendTo(globalData.mask);
 		
-		$(popin).click(function(e){
-			e.stopPropagation();
-		});
-		
 		var settings = $.extend({
 			triggers: undefined,
 			position: 'middle',
