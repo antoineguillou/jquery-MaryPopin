@@ -2,8 +2,8 @@
  * jQuery Mary Popin
  *
  * Author : @starfennec
- * Version: 0.7 beta
- * Date: jul 08 2015
+ * Version: 0.7.1 beta
+ * Date: aug 10 2015
  * Doc: https://github.com/antoineguillou/jquery-MaryPopin
  */
 
@@ -13,7 +13,8 @@
 		firstInit: true,
 		htmlOverflow: 'auto',
 		popins: [],
-		windowWidth: undefined
+		windowWidth: undefined,
+		fixedElements: $('.marypopin-fixed')
 	};
 	
 	var MaryPopin = function(popin, options) {
@@ -28,7 +29,7 @@
 		var settings = $.extend({
 			triggers: undefined,
 			position: 'middle',
-			closeSelector: '.close',
+			closeSelector: '.marypopin-close',
 			speed: 300,
 			maskClick: true,
 			beforeOpen: undefined,
@@ -122,6 +123,7 @@
 			'overflow' : 'hidden',
 			'width' : globalData.windowWidth
 		});
+		globalData.fixedElements.css( 'width', globalData.windowWidth );
 		
 		// Show mask (set timeout to fix IE display bug)
 		setTimeout(function(){
@@ -142,6 +144,9 @@
 				$('body').css({
 					'overflow' : globalData.bodyOverflow,
 					'width' : 'auto'
+				});
+				globalData.fixedElements.css({
+					'width' : ''
 				});
 			});
 		},0);

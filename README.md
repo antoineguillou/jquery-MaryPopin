@@ -161,6 +161,14 @@ $('#popin').marypopin({
   </tr>
 </table>
 
+Warning
+-------------
+
+If you have fixed elements on you page that move a few pixels when opening the popin, you will need to add the "marypopin-fixed" class to these elements to prevent this.
+
+More stuff
+-------------
+
 You might need to know what element triggered the popin in one of the functions, here's an example where we want to add a class to the trigger when the popin is opened :
 
 ```javascript

@@ -48,6 +48,7 @@
 			margin-bottom: 50px;
 			margin-top: 50px;
 			color: white;
+			
 		}
 		.btn {
 			background-color: #FFF;
@@ -67,6 +68,7 @@
 		}
 		.buttons{
 			height: 3000px;
+			margin-top: 200px;
 		}
 		.buttons ul {
 			width: 200px;
@@ -86,6 +88,18 @@
 		}
 		.buttons li.last {
 			margin-right: 0px;
+		}
+		.marypopin-fixed{
+			background-color: #000;
+			bottom: 0;
+			color: #fff;
+			font: 400 11px/20px Menlo, Monaco, Consolas, 'Courier New', monospace;;
+			left: 0;
+			padding: 5px 0;
+			position: fixed;
+			text-align: center;
+			width: 100%;
+			z-index: 10;
 		}
 	</style>
 </head>
@@ -110,8 +124,10 @@
 	</div>
 	
 	<div id="popin-2" class="popin">
-		<p><a href="#" class="close-popin">x</a> Popin 2<br /><a href="#" id="trigger-4">Open the other popin</a></p>
+		<p><a href="#" class="marypopin-close">x</a> Popin 2<br /><a href="#" id="trigger-4">Open the other popin</a></p>
 	</div>
+	
+	<div class="marypopin-fixed">.marypopin-fixed</div>
 	
 	<!-- Import jQuery 1.9.1-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -121,7 +137,7 @@
 	<script src="js/jquery-mary-popin.js"></script>
 	
 	<script>
-		(function($){			
+		(function($){
 			$('#popin-1').marypopin({
 				triggers: '#trigger-1, #trigger-4',
 				position: 'middle',
