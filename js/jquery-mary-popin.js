@@ -132,10 +132,6 @@
 			globalData.mask.fadeIn(300);
 		},0);
 		
-		// Prevent Scroll on iOS
-		$('body').on('touchmove', function(e){
-			e.preventDefault();
-		});
 	}
 	
 	// Hide overlay
@@ -155,9 +151,6 @@
 				globalData.fixedElements.css({
 					'padding-right' : ''
 				});
-				
-				// Revert Scroll on iOS
-				$('body').off('touchmove');
 			});
 		},0);
 	}
@@ -165,6 +158,11 @@
 	// Show popin
 	function openPopin(mp, trigger){		
 		mp.isOpen = true;
+		
+		// Prevent Scroll on iOS
+		$('body').on('touchmove', function(e){
+			e.preventDefault();
+		});
 		
 		// 'Before' function
 		if(typeof mp.settings.beforeOpen === 'function')
@@ -189,6 +187,9 @@
 			mp.settings.beforeClose(mp, trigger);
 		
 		mp.popin.addClass('animate-off').fadeOut(mp.settings.speed, function(){
+			// Revert Scroll on iOS
+			$('body').off('touchmove');
+			
 			if(typeof mp.settings.afterClose === 'function')
 				mp.settings.afterClose(mp, trigger);
 			
