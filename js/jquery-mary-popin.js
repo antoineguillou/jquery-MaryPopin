@@ -2,8 +2,8 @@
  * jQuery Mary Popin
  *
  * Author : @starfennec
- * Version: 0.7.1 beta
- * Date: aug 10 2015
+ * Version: 0.7.2 beta
+ * Date: jan 14 2016
  * Doc: https://github.com/antoineguillou/jquery-MaryPopin
  */
 
@@ -14,6 +14,7 @@
 		htmlOverflow: 'auto',
 		popins: [],
 		windowWidth: undefined,
+		scrollbarWidth: undefined,
 		fixedElements: $('.marypopin-fixed')
 	};
 	
@@ -40,9 +41,10 @@
 		
 		this.settings = settings;
 		
-		
 		this.popin = $(popin);
 		this.isOpen = false;
+		
+		getScrollbarWidth();
 		
 		// Triggers click
 		if(this.settings.triggers != undefined){
@@ -123,12 +125,17 @@
 			'overflow' : 'hidden',
 			'width' : globalData.windowWidth
 		});
-		globalData.fixedElements.css( 'width', globalData.windowWidth );
+		globalData.fixedElements.css( 'padding-right', globalData.scrollbarWidth );
 		
 		// Show mask (set timeout to fix IE display bug)
 		setTimeout(function(){
 			globalData.mask.fadeIn(300);
 		},0);
+		
+		// Prevent Scroll on iOS
+		$('body').on('touchmove', function(e){
+			e.preventDefault();
+		});
 	}
 	
 	// Hide overlay
@@ -146,8 +153,11 @@
 					'width' : 'auto'
 				});
 				globalData.fixedElements.css({
-					'width' : ''
+					'padding-right' : ''
 				});
+				
+				// Revert Scroll on iOS
+				$('body').off('touchmove');
 			});
 		},0);
 	}
@@ -257,6 +267,25 @@
 					e.positionPopin();
 			});
 		});
+	}
+	
+	// Check browser's scrollbars width
+	function getScrollbarWidth(){
+		var $temp = $('<div id="marypopin-scrollbar-test"></div>');
+		$temp
+			.css({
+				'height' : 100,
+				'left' : 0,
+				'overflow' : 'scroll',
+				'position' : 'absolute',
+				'top' : -9000,
+				'width' : 100
+			})
+			.appendTo('body');
+			
+		var temp = $temp.get(0);
+		globalData.scrollbarWidth = temp.offsetWidth - temp.clientWidth;
+		$temp.remove();
 	}
 	
 	// Check viewport's height

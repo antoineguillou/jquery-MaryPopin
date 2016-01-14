@@ -48,7 +48,7 @@ All you have to do is add some CSS.
 A new fullsize div with the id "marypopin-mask" is created at the end of the body tag.
 The popin element is placed inside that div.
 
-Medthods
+Methods
 -------------
 
 You can add a selector when you initialize the popin :
