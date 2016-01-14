@@ -161,7 +161,9 @@
 		
 		// Prevent Scroll on iOS
 		$('body').on('touchmove', function(e){
-			e.preventDefault();
+			if($(e.target).closest('#marypopin-mask').length <= 0){
+				e.preventDefault();
+			}
 		});
 		
 		// 'Before' function
