@@ -20,7 +20,7 @@ and an element you want to use as your popin :
 
 ```html
 <div id="popin">
-	<p>Hello World !</p>
+    <p>Hello World !</p>
 </div>
 ```
 
@@ -70,8 +70,8 @@ There are a few other things you can do, like open a popin from anywhere in your
 
 ```javascript
 $('#trigger').click(function(e){
-	e.preventDefault();
-	$('#popin').marypopin('open');
+    e.preventDefault();
+    $('#popin').marypopin('open');
 });
 ```
 
@@ -79,12 +79,12 @@ $('#trigger').click(function(e){
 
 ```javascript
 $('#some-other-link').click(function(e){
-	e.preventDefault();
-	$('#popin').marypopin('close');
+    e.preventDefault();
+    $('#popin').marypopin('close');
 });
 ```
 
-... or recalculate it's vartical position (this can be useful if you need to change the popin's content while it's open) :
+... or recalculate it's vertical position (this can be useful if you need to change the popin's content while it's open) :
 
 ```javascript
 $('#popin').marypopin('positionPopin');
@@ -116,15 +116,15 @@ A few options are available if you need them :
 
 ```javascript
 $('#popin').marypopin({
-	triggers: '#trigger',
-	closeSelector: '.close',
-	position: 'middle',
-	speed: 300,
-	maskClick: true,
-	beforeOpen: function(){},
-	afterOpen: function(){},
-	beforeClose: function(){},
-	afterClose: function(){}
+    triggers: '#trigger',
+    closeSelector: '.close',
+    position: 'middle',
+    speed: 300,
+    maskClick: true,
+    beforeOpen: function(){},
+    afterOpen: function(){},
+    beforeClose: function(){},
+    afterClose: function(){}
 });
 ```
 
@@ -173,9 +173,9 @@ You might need to know what element triggered the popin in one of the functions,
 
 ```javascript
 $('#popin').marypopin({
-	beforeOpen: function(popin, trigger){
-		$(trigger).addClass('clicked');
-	}
+    beforeOpen: function(popin, trigger){
+        $(trigger).addClass('clicked');
+    }
 });
 ```
 It can be useful if you need to load content inside the popin...
