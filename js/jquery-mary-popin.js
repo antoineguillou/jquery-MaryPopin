@@ -173,7 +173,9 @@
             mp.settings.beforeOpen(mp, trigger);
 
         // Set popin position
-        mp.positionPopin();
+        setTimeout(function(){
+            mp.positionPopin();
+        }, 0);
 
         mp.popin.addClass('animate-on').fadeIn(mp.settings.speed, function(){
             if(typeof mp.settings.afterOpen === 'function')
